@@ -3,3 +3,4 @@ from .views import *
 urlpatterns = [
     path('', home, name='home'),  # Include marketplace app URLs
 ]
+
