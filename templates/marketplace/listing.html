@@ -6,6 +6,24 @@
     <title>MarketPlace</title>
 </head>
 <body>
-    <h1>MarketPlace</h1>
+    <h1>Marketplace</h1>
+    <a href="{% url 'upload' %}">Add New Item</a>
+  
+    <p>Welcome to the marketplace! Here you can find various items for sale.</p>
+
+    {% if items %}
+        <ul>
+            {% for item in items %}
+                <li>
+                    <h2>{{ item.title }}</h2>
+                    <p>{{ item.description }}</p>
+                    <p>Price: ${{ item.price }}</p>
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="width: 200px; height: auto;">
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items available at the moment.</p>
+    {% endif %}
 </body>
 </html> 

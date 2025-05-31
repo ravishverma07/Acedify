@@ -1,7 +1,39 @@
 from django.shortcuts import render
+from .models import Item
+from django.shortcuts import redirect
 
 def listing(request):
     """
     Render the marketplace listing page.
     """
-    return render(request, 'marketplace/listing.html')
+    items = Item.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'marketplace/listing.html', context)
+
+def upload(request):
+    """
+    Render the marketplace upload page.
+    """
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        semester = request.POST.get('semester')
+        image = request.FILES.get('image')
+        user = request.user
+        if name and description and price and image:
+            item = Item(
+                user=user,
+                name=name,
+                description=description,
+                price=price,
+                image=image
+            )
+            item.save()
+            return redirect('listing')
+        else:
+            print("Error: All fields are required.")
+            return render(request, 'marketplace/upload.html', {'error': 'All fields are required.'})
+    return render(request, 'marketplace/upload.html')
