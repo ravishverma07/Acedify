@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from .models import CustomUser
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
@@ -42,12 +42,12 @@ def signup_view(request):
             messages.error(request, 'Passwords do not match. Please try again.')
             return render(request, 'users/signup.html')
 
-        if User.objects.filter(email=email).exists():
+        if CustomUser.objects.filter(email=email).exists():
             messages.error(request, 'Email is already in use. Please try another.')
             return render(request, 'users/signup.html')
 
         # Create the new user
-        user = User.objects.create_user(username=username, 
+        user = CustomUser.objects.create_user(username=username, 
                                         email=email,
                                         password=password1
                                         )
