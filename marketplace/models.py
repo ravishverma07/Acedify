@@ -9,7 +9,7 @@ class Item(models.Model):
     date_posted = models.DateField(auto_now_add=True)
     semester = models.CharField(max_length=20)
     is_available = models.BooleanField(default=True)
-    image = models.ImageField(upload_to='item_images/', null=True, blank=True)
+    image = models.ImageField(upload_to='listing_images', null=True, blank=True)
     def __str__(self):
         return f"{self.name} - {self.user.username}"
 

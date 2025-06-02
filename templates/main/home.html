@@ -1,5 +1,4 @@
-
-{% extends 'main/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Acedify{% endblock %}
 
@@ -9,6 +8,7 @@
     <p>Your one-stop solution for all academic needs.</p>
 
     {% comment %} <p><a href="{% url '' %}">Explore our marketplace for academic resources</a>.</p> {% endcomment %}
+    <p><a href="{% url 'listing' %}">Explore our marketplace for academic resources</a>.</p>
     <p>Join our community of learners and educators.</p>
 </div>
 {% endblock %}
