@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'acedify.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
+LOGIN_URL = 'login'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
+
 def listing(request):
     """
     Render the marketplace listing page.
@@ -26,14 +27,14 @@ def upload(request):
         semester = request.POST.get('semester')
         image = request.FILES.get('image')
         user = request.user
-        current_date =  timezone.now().date()
         if name and description and price and image and user:
             item = Item(
                 user=user,
                 name=name,
                 description=description,
                 price=price,
-                image=image
+                image=image,
+                semester=semester if semester else 'none',
             )
             item.save()
             return redirect('listing')
