@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Item
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 def listing(request):
     """
@@ -12,6 +13,7 @@ def listing(request):
     }
     return render(request, 'marketplace/listing.html', context)
 
+@login_required
 def upload(request):
     """
     Render the marketplace upload page.
