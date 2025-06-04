@@ -3,11 +3,27 @@
 {% block title %}Acedify{% endblock %}
 
 {% block content %}
-<div class="jumbotron text-center">
-    <h1 class="display-4">Welcome to Acedify</h1>
-    <p>Your one-stop solution for all academic needs.</p>
-
-    <p><a href="{% url 'listing' %}">Explore our marketplace for academic resources</a>.</p>
-    <p>Join our community of learners and educators.</p>
+</main>
+<div class="tagline">
+    <h1 >Hello, What Do You Want To Learn?</h1>
 </div>
+<div class="marketP">
+     <p><a href="{% url 'listing' %}">Explore our marketplace for academic resources</a>.</p>
+</div>
+
+
+<div class="search-wrapper">
+    <input type="text" placeholder="Search for courses, resources, or topics..." />
+    <i class="fa-solid fa-magnifying-glass"></i>
+    
+</div>
+
+<div class="buttons">
+    <button>Previous Year Question Paper</button>
+    <button>Your Own Marketplace</button>
+    <button>Question Bank</button>
+</div>
+
+</main>
+ 
 {% endblock %}

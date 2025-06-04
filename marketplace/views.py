@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
+
 def listing(request):
     """
     Render the marketplace listing page.
