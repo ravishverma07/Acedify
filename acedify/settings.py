@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'marketplace',
     'main',
     'users',
+    'message',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

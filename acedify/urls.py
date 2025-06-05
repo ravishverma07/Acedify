@@ -23,7 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('marketplace/', include('marketplace.urls')),
     path('', include('main.urls')),
-    path('', include('users.urls'))   
+    path('', include('users.urls')),
+    path('messages/', include('message.urls')),
+
 ]
 
 if settings.DEBUG:
