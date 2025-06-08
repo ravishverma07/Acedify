@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'marketplace',
     'main',
     'users',
+    'message',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -90,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'acedify',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'Kaka Sharma001',
         'HOST': 'localhost',
         'PORT': '5432',
     }
