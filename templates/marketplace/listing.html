@@ -1,29 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarketPlace</title>
-</head>
-<body>
-    <h1>Marketplace</h1>
-    <a href="{% url 'upload' %}">Add New Item</a>
-  
-    <p>Welcome to the marketplace! Here you can find various items for sale.</p>
+{% extends 'base.html' %}
+
+{% block title %}MarketPlace{% endblock %}
+
+{% block content %}
+<style>
+    .item-marketplace {
+        margin-top: 10px;
+        padding: 1rem;
+        border-radius: 10px;
+        color: white;
+        background:
+            linear-gradient(135deg, #1C1C1C, #1C1C1C) padding-box,
+            linear-gradient(135deg, #FF914D, #6A0572) border-box;
+        border: 2px solid transparent;
+       }
+       .market-heading-container {
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+       }
+       .market-heading-container h1 {
+            color: #FF6B6B;
+            transform: translateX(-50%);
+            position: absolute;
+            left: 50%;
+       }
+    </style>
+
+
+    <div class="market-heading-container">
+        <h1>Marketplace</h1>
+        <a style="color: #FF6B6B;" href="{% url 'upload' %}">SELL</a>
+    </div>
+    <p style="color: #AAAAAA; text-align: center;">Welcome to the marketplace! Here you can find various items for sale.</p>
 
     {% if items %}
+            {% for item in items %}
+                <div class="item-marketplace">
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" style="width: 200px; height: auto;">
+                    <h4>{{ item.name }}</h4>
+                    <h5>₹{{ item.price }}</h5>
+                    <h6>{{ item.semester }}</h6>
+                    <p>{{ item.description }}</p>
+
+                </div>
+            {% endfor %}
+        
+    {% else %}
+        <p>No items available at the moment.</p>
+    {% endif %}
+
+{% endblock %}
+        <!-- {% if items %}
         
             {% for item in items %}
-                <div class="item" style="border: 1px solid black; width: 300px;">
+            <div class="items-container" style="background: linear-gradient(135deg, #FF914D, #FF3C38);">
+                <div class="item">
                     <img src="{{ item.image.url }}" alt="{{ item.title }}" style="width: 200px; height: auto;">
                     <h4>{{ item.name }}</h4>
                     <h5>Price: ₹{{ item.price }}</h5>
                     <p>{{ item.description }}</p>
                 </div>
+            </div>
             {% endfor %}
-      
+        
     {% else %}
         <p>No items available at the moment.</p>
-    {% endif %}
-</body>
-</html> 
+    {% endif %} -->

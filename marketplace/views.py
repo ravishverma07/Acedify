@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Item
 from django.shortcuts import redirect
+from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+
 
 def listing(request):
     """
@@ -12,6 +15,7 @@ def listing(request):
     }
     return render(request, 'marketplace/listing.html', context)
 
+@login_required
 def upload(request):
     """
     Render the marketplace upload page.
@@ -23,13 +27,14 @@ def upload(request):
         semester = request.POST.get('semester')
         image = request.FILES.get('image')
         user = request.user
-        if name and description and price and image:
+        if name and description and price and image and user:
             item = Item(
                 user=user,
                 name=name,
                 description=description,
                 price=price,
-                image=image
+                image=image,
+                semester=semester if semester else 'none',
             )
             item.save()
             return redirect('listing')
