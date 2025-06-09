@@ -1,4 +1,8 @@
-<h1 style="text-align: center; color: #2c3e50; font-family: Arial, sans-serif; margin-bottom: 20px;">
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1 style="text-align: center; color:rgb(227, 234, 241); font-family: Arial, sans-serif; margin-bottom: 20px;">
     Chat with {{ receiver.username }}
 </h1>
 <div style="border: 1px solid #dcdcdc; border-radius: 10px; padding: 20px; max-width: 600px; margin: 0 auto; background-color: #f9f9f9;">
@@ -31,3 +35,4 @@
 <a href="{% url 'user_list' %}" style="display: block; text-align: center; margin-top: 20px; color: #3498db; font-family: Arial, sans-serif; text-decoration: none; font-size: 24px;">
     Back to Users
 </a>
+{% endblock content %}
